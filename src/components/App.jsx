@@ -14,9 +14,10 @@ const App = () => {
     <>
     <Navigation />
     <Suspense fallback={<h1>Loading</h1>}>
-      <Routes>       
-        <Route path="/movies" element={<MoviesView />} />
+      <Routes>
         <Route path="/" element={<HomeView />} />        
+        <Route path="/movies" element={<MoviesView />} />
+               
       </Routes>
     </Suspense>
     </>

@@ -3,7 +3,7 @@ axios.defaults.baseURL = 'https://api.themoviedb.org/3/'
 
 const KEY = '067f291d21ed1c6d30bd9ade17d843cc';
 
-async function trendMovies() {
+export async function trendMovies() {
     const params = {
       api_key: KEY,         
     };
@@ -15,7 +15,7 @@ async function trendMovies() {
     }    
   };
 
-  async function searchMovie( searchQuery = '') {
+  export async function searchMovie( searchQuery = '') {
     const params = {
       api_key: KEY,
       query: searchQuery          
@@ -28,7 +28,7 @@ async function trendMovies() {
     }    
   };
   
-  async function movieById( id = '') {
+  export async function movieById( id = '') {
     const params = {
       api_key: KEY,               
     };
@@ -40,7 +40,7 @@ async function trendMovies() {
     }    
   };
 
-  async function movieCredits( id = '') {
+  export async function movieCredits( id = '') {
     const params = {
       api_key: KEY,               
     };
@@ -52,7 +52,7 @@ async function trendMovies() {
     }    
   };
 
-  async function movieReviews( id = '') {
+  export async function movieReviews( id = '') {
     const params = {
       api_key: KEY,               
     };
