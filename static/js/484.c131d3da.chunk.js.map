@@ -1,1 +1,0 @@
-{"version":3,"file":"static/js/484.c131d3da.chunk.js","mappings":"gMAAe,SAASA,IACpB,OACI","sources":["views/MoviesView.js"],"sourcesContent":["export default function MoviesView() {\n    return(\n        <h1>MoviesView</h1>\n    )\n}"],"names":["MoviesView"],"sourceRoot":""}
