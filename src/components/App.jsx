@@ -8,9 +8,7 @@ const HomeView = lazy(()=>{
 
 const MoviesView = lazy(()=>import('../views/MoviesView.js'))
 
-// const options = {
-//   origins: []
-// };
+
 const App = () => {
   return (
     <>
