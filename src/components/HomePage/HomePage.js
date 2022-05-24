@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { trendMovies } from "services/films-api";
+import { trendMovies } from "../../services/films-api";
 
 
-export default function HomeView() {
+export default function HomePage() {
     
     const [films, setFilms] = useState([]);
     useEffect(() => {trendMovies().then(({results}) => setFilms(results))}, [])

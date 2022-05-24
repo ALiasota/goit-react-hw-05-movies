@@ -5,19 +5,19 @@ export default function Navigation() {
   return (
     <header className={styles.header}>
     <nav>
-      <NavLink
+        <NavLink
         
         to="/"
-        className={styles.link}
-        // activeClassName={styles.activeLink}
+        
+        className={({ isActive }) =>(isActive ? styles.activeLink : styles.link)}
       >
         Home
       </NavLink>
 
       <NavLink
         to="movies"
-        className={styles.link}
-        // activeClassName={styles.activeLink}
+       
+        className={({ isActive }) =>(isActive ? styles.activeLink : styles.link)}
       >
         Movies
       </NavLink>      

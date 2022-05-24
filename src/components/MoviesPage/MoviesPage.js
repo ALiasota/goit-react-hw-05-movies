@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { searchMovie } from "services/films-api";
+import { searchMovie } from "../../services/films-api";
 
 
-export default function MovieView() {
+export default function MoviesPage() {
     const [query, setQuery] = useState('');
     const [films, setFilms] = useState([]);
     const handleSubmit = e => {
