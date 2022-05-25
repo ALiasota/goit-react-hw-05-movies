@@ -1,25 +1,22 @@
-import React, { lazy, Suspense, useEffect } from 'react';
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import React, { lazy, Suspense } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import Navigation from './Navigation';
 
-const HomePage = lazy(()=>import('./HomePage'));
-const MoviesPage = lazy(() => import('./MoviesPage'))
-const MovieDetailsPage = lazy(()=> import('./MovieDetailsPage'))
-
+const HomePage = lazy(()=> import('./HomePage'));
+const MoviesPage = lazy(() => import('./MoviesPage'));
+const MovieDetailsPage = lazy(()=> import('./MovieDetailsPage'));
+const Nothing = lazy(()=>import('./Nothihg'));
 
 const App = () => {
-  const navigate = useNavigate();
- 
-  useEffect(()=>{    
-    navigate("/");
-  },[])
+  
   return (      
     <Suspense fallback={<h1>Loading</h1>}>
       <Routes>
         <Route path="/" element={<Navigation />}>  
-            <Route path="/" element={<HomePage />} />        
-            <Route path="/movies" element={<MoviesPage />} />
-            <Route path="/movies/:movieId/*" element={<MovieDetailsPage />} />
+            <Route index element={<HomePage />} />        
+            <Route path="movies" element={<MoviesPage />} />
+            <Route path="movies/:movieId/*" element={<MovieDetailsPage />} />
+            <Route path='*' element={<Nothing />} />
         </Route>    
       </Routes>
     </Suspense>    
