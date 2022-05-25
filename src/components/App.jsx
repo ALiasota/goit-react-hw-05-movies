@@ -1,6 +1,5 @@
-
-import React, { lazy, Suspense } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import React, { lazy, Suspense, useEffect } from 'react';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import Navigation from './Navigation';
 
 const HomePage = lazy(()=>import('./HomePage'));
@@ -9,10 +8,12 @@ const MovieDetailsPage = lazy(()=> import('./MovieDetailsPage'))
 
 
 const App = () => {
-  return (
-    <>
-      
-      
+  const navigate = useNavigate();
+ 
+  useEffect(()=>{    
+    navigate("/");
+  },[])
+  return (      
     <Suspense fallback={<h1>Loading</h1>}>
       <Routes>
         <Route path="/" element={<Navigation />}>  
@@ -21,8 +22,7 @@ const App = () => {
             <Route path="/movies/:movieId/*" element={<MovieDetailsPage />} />
         </Route>    
       </Routes>
-    </Suspense>
-    </>
+    </Suspense>    
   );
 };
 
