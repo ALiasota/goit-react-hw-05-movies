@@ -1,14 +1,19 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, lazy, Suspense } from "react";
 import { movieById } from '../../services/films-api';
-import { useParams, useNavigate, Link } from 'react-router-dom';
-import styles from './MovieDetailsPage.module.css'
+import { useParams, useNavigate, Link, Routes, Route } from 'react-router-dom';
+import styles from './MovieDetailsPage.module.css';
+
+const Cast = lazy(() => import('../Cast'));
+const Reviews = lazy(() => import('../Reviews'));
+
 export default function MovieDetailsPage() {
+    
     const { movieId } = useParams();
     let navigate = useNavigate();
   function handleClick() {
     navigate(-1);
   };
-    // console.log(history);
+    
     const [movie, setMovie] = useState(null);
     useEffect(() => {
         movieById(movieId).then(setMovie);
@@ -20,9 +25,7 @@ export default function MovieDetailsPage() {
    
         <>
             <button  className={styles.back} onClick={handleClick}>Go back</button>
-            {/* <Link
-                className={styles.back}
-                to="/">Go back</Link> */}
+            
             <div className={styles.filmCont}>
                 <div className={styles.thumb}>
                     <img className={styles.picture} src={picturePath}  alt={original_title} />
@@ -41,14 +44,19 @@ export default function MovieDetailsPage() {
                 <p>Additional information</p>
                 <ul>
                     <li>
-                        <Link to="/">Cast</Link>
+                        <Link to="cast">Cast</Link>
                     </li>
                     <li>
-                        <Link to="/">Reviews</Link>
+                        <Link to="reviews">Reviews</Link>
                     </li>
                 </ul>
             </div>
-          
+            <Suspense fallback={<h1>Loading</h1>}>
+                <Routes>
+                    <Route path="cast" element={<Cast  id={movieId} />} />
+                    <Route path="reviews" element={<Reviews id={movieId} />} />
+                </Routes>
+            </Suspense>
         </>
     
   );

@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import {useSearchParams, Link  } from "react-router-dom";
 import { searchMovie } from "../../services/films-api";
 
 
 export default function MoviesPage() {
     const [query, setQuery] = useState('');
     const [films, setFilms] = useState([]);
+    const [searchParams, setSearchParams] = useSearchParams();
     const handleSubmit = e => {
         e.preventDefault();
         const searchQuery = query.trim();
@@ -13,7 +14,9 @@ export default function MoviesPage() {
             alert('Empty');
             return;
         }
-        searchMovie(searchQuery).then(({results}) => setFilms(results));
+        setSearchParams({ query: searchQuery });
+        searchMovie(searchQuery).then(({ results }) => setFilms(results));
+        
     }
     const handleChange = e => {
         setQuery(e.currentTarget.value);
@@ -38,7 +41,7 @@ export default function MoviesPage() {
             <ul>
                 {films.map(({id, original_title}) => 
                 (<li key={id}>
-                    <Link to={`movies/${id}`}>{original_title}</Link>
+                    <Link to={`${id}`}>{original_title}</Link>
                     </li>))} 
                     </ul>
         )}
