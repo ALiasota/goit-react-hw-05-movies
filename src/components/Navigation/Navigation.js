@@ -1,9 +1,11 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 import styles from './Navigation.module.css';
 
 export default function Navigation() {
   return (
+    <>
     <header className={styles.header}>
+      
     <nav>
         <NavLink
         
@@ -20,8 +22,13 @@ export default function Navigation() {
         className={({ isActive }) =>(isActive ? styles.activeLink : styles.link)}
       >
         Movies
-      </NavLink>      
+        </NavLink>
+        
     </nav>
     </header>
+    <main>
+          <Outlet />
+      </main>
+      </>
   );
 }

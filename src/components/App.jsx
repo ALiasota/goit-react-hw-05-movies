@@ -11,13 +11,15 @@ const MovieDetailsPage = lazy(()=> import('./MovieDetailsPage'))
 const App = () => {
   return (
     <>
-      <Navigation />
+      
       
     <Suspense fallback={<h1>Loading</h1>}>
       <Routes>
-        <Route path="/" element={<HomePage />} />        
-        <Route path="/movies" element={<MoviesPage />} />
-        <Route path="/movies/:movieId/*" element={<MovieDetailsPage />} />  
+        <Route path="/" element={<Navigation />}>  
+            <Route path="/" element={<HomePage />} />        
+            <Route path="/movies" element={<MoviesPage />} />
+            <Route path="/movies/:movieId/*" element={<MovieDetailsPage />} />
+        </Route>    
       </Routes>
     </Suspense>
     </>

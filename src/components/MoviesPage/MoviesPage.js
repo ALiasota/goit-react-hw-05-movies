@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {useSearchParams, Link  } from "react-router-dom";
 import { searchMovie } from "../../services/films-api";
 
@@ -7,6 +7,12 @@ export default function MoviesPage() {
     const [query, setQuery] = useState('');
     const [films, setFilms] = useState([]);
     const [searchParams, setSearchParams] = useSearchParams();
+    useEffect(() => {
+        const searchQuery = searchParams.get('query');
+        if (searchQuery) {
+            searchMovie(searchQuery).then(({ results }) => setFilms(results));
+        }
+    })
     const handleSubmit = e => {
         e.preventDefault();
         const searchQuery = query.trim();
