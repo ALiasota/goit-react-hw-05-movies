@@ -25,5 +25,5 @@ export default function Reviews({ id }) {
 }
 
 Reviews.propTypes = {
-  id: propTypes.number.isRequired,
+  id: propTypes.string.isRequired,
 };

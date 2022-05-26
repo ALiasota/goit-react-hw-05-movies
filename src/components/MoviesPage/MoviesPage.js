@@ -14,7 +14,7 @@ export default function MoviesPage() {
   });
   const handleSubmit = e => {
     e.preventDefault();
-    const searchQuery = query.trim();
+    const searchQuery = query.trim().toLocaleLowerCase();
     if (searchQuery === '') {
       alert('Empty');
       return;

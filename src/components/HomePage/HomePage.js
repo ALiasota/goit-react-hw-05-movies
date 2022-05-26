@@ -7,7 +7,7 @@ export default function HomePage() {
   useEffect(() => {
     trendMovies().then(({ results }) => setFilms(results));
   }, []);
-  console.log(films);
+
   return (
     <>
       {films && (
